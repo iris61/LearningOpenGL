@@ -12,6 +12,10 @@
 		2B23E06525D2850E002B117C /* shader1.vs in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E06425D2850E002B117C /* shader1.vs */; };
 		2B23E06825D28527002B117C /* shader1.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E06725D28526002B117C /* shader1.fs */; };
 		2B23E94025D29BA7002B117C /* texture1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B23E93F25D29BA7002B117C /* texture1.cpp */; };
+		2B23E94425D2B90E002B117C /* wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94325D2B90E002B117C /* wall.jpg */; };
+		2B23E94925D38025002B117C /* shader2.vs in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94725D38025002B117C /* shader2.vs */; };
+		2B23E94A25D38025002B117C /* shader2.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94825D38025002B117C /* shader2.fs */; };
+		2B23E94D25D38D68002B117C /* fu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94C25D38D68002B117C /* fu.jpg */; };
 		2BAD0A6E25C417E200F1DB9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAD0A6D25C417E200F1DB9B /* Assets.xcassets */; };
 		2BAD0A7125C417E200F1DB9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAD0A6F25C417E200F1DB9B /* Main.storyboard */; };
 		2BAD0A8025C4198F00F1DB9B /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAD0A7F25C4198F00F1DB9B /* libGLEW.2.1.0.dylib */; };
@@ -27,6 +31,11 @@
 		2B23E06425D2850E002B117C /* shader1.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader1.vs; sourceTree = "<group>"; };
 		2B23E06725D28526002B117C /* shader1.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader1.fs; sourceTree = "<group>"; };
 		2B23E93F25D29BA7002B117C /* texture1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = texture1.cpp; sourceTree = "<group>"; };
+		2B23E94325D2B90E002B117C /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
+		2B23E94625D2BF75002B117C /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		2B23E94725D38025002B117C /* shader2.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader2.vs; sourceTree = "<group>"; };
+		2B23E94825D38025002B117C /* shader2.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader2.fs; sourceTree = "<group>"; };
+		2B23E94C25D38D68002B117C /* fu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fu.jpg; sourceTree = "<group>"; };
 		2BAD0A6425C417E000F1DB9B /* opengl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = opengl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAD0A6D25C417E200F1DB9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BAD0A7025C417E200F1DB9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,9 +84,21 @@
 		2B23E93E25D29B89002B117C /* Texture */ = {
 			isa = PBXGroup;
 			children = (
+				2B23E94825D38025002B117C /* shader2.fs */,
+				2B23E94725D38025002B117C /* shader2.vs */,
 				2B23E93F25D29BA7002B117C /* texture1.cpp */,
+				2B23E94325D2B90E002B117C /* wall.jpg */,
+				2B23E94C25D38D68002B117C /* fu.jpg */,
+				2B23E94625D2BF75002B117C /* stb_image.h */,
 			);
 			path = Texture;
+			sourceTree = "<group>";
+		};
+		2B23E95025D3C80C002B117C /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Transform;
 			sourceTree = "<group>";
 		};
 		2BAD0A5B25C417E000F1DB9B = {
@@ -100,6 +121,7 @@
 		2BAD0A6625C417E000F1DB9B /* opengl */ = {
 			isa = PBXGroup;
 			children = (
+				2B23E95025D3C80C002B117C /* Transform */,
 				2B23E93E25D29B89002B117C /* Texture */,
 				2B23D54925D268B2002B117C /* Shader */,
 				2B23D54725D2683D002B117C /* DrawTriangle */,
@@ -178,7 +200,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B23E94D25D38D68002B117C /* fu.jpg in Resources */,
+				2B23E94925D38025002B117C /* shader2.vs in Resources */,
 				2BAD0A6E25C417E200F1DB9B /* Assets.xcassets in Resources */,
+				2B23E94A25D38025002B117C /* shader2.fs in Resources */,
+				2B23E94425D2B90E002B117C /* wall.jpg in Resources */,
 				2BAD0A7125C417E200F1DB9B /* Main.storyboard in Resources */,
 				2B23E06825D28527002B117C /* shader1.fs in Resources */,
 				2B23E06525D2850E002B117C /* shader1.vs in Resources */,
