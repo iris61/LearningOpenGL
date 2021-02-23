@@ -23,6 +23,10 @@
 		2BAD0A8425C419B600F1DB9B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAD0A8325C419B600F1DB9B /* OpenGL.framework */; };
 		2BAD0A8625C419CF00F1DB9B /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD0A8525C419CF00F1DB9B /* glad.c */; };
 		2BAD0A8E25C41A2300F1DB9B /* triangl1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BAD0A8D25C41A2300F1DB9B /* triangl1.cpp */; };
+		2BDB85EB25E3D6C8001BA212 /* transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB85EA25E3D6C8001BA212 /* transform.cpp */; };
+		2BDB85EE25E3D97A001BA212 /* std_image_read.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB85ED25E3D97A001BA212 /* std_image_read.cpp */; };
+		2BDB8A6025E3E187001BA212 /* shader3.vs in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB8A5F25E3E187001BA212 /* shader3.vs */; };
+		2BDB8A6325E3E1F0001BA212 /* shader3.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2BDB8A6225E3E1F0001BA212 /* shader3.fs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,10 @@
 		2BAD0A8325C419B600F1DB9B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2BAD0A8525C419CF00F1DB9B /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		2BAD0A8D25C41A2300F1DB9B /* triangl1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = triangl1.cpp; sourceTree = "<group>"; };
+		2BDB85EA25E3D6C8001BA212 /* transform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = transform.cpp; sourceTree = "<group>"; };
+		2BDB85ED25E3D97A001BA212 /* std_image_read.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = std_image_read.cpp; sourceTree = "<group>"; };
+		2BDB8A5F25E3E187001BA212 /* shader3.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader3.vs; sourceTree = "<group>"; };
+		2BDB8A6225E3E1F0001BA212 /* shader3.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader3.fs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +97,6 @@
 				2B23E93F25D29BA7002B117C /* texture1.cpp */,
 				2B23E94325D2B90E002B117C /* wall.jpg */,
 				2B23E94C25D38D68002B117C /* fu.jpg */,
-				2B23E94625D2BF75002B117C /* stb_image.h */,
 			);
 			path = Texture;
 			sourceTree = "<group>";
@@ -97,6 +104,9 @@
 		2B23E95025D3C80C002B117C /* Transform */ = {
 			isa = PBXGroup;
 			children = (
+				2BDB8A6225E3E1F0001BA212 /* shader3.fs */,
+				2BDB8A5F25E3E187001BA212 /* shader3.vs */,
+				2BDB85EA25E3D6C8001BA212 /* transform.cpp */,
 			);
 			path = Transform;
 			sourceTree = "<group>";
@@ -121,6 +131,7 @@
 		2BAD0A6625C417E000F1DB9B /* opengl */ = {
 			isa = PBXGroup;
 			children = (
+				2BDB85F125E3DB55001BA212 /* includes */,
 				2B23E95025D3C80C002B117C /* Transform */,
 				2B23E93E25D29B89002B117C /* Texture */,
 				2B23D54925D268B2002B117C /* Shader */,
@@ -129,7 +140,6 @@
 				2BAD0A6F25C417E200F1DB9B /* Main.storyboard */,
 				2BAD0A7225C417E200F1DB9B /* Info.plist */,
 				2BAD0A7525C417E200F1DB9B /* opengl.entitlements */,
-				2BAD0A8525C419CF00F1DB9B /* glad.c */,
 			);
 			path = opengl;
 			sourceTree = "<group>";
@@ -142,6 +152,16 @@
 				2BAD0A7F25C4198F00F1DB9B /* libGLEW.2.1.0.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BDB85F125E3DB55001BA212 /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				2BAD0A8525C419CF00F1DB9B /* glad.c */,
+				2B23E94625D2BF75002B117C /* stb_image.h */,
+				2BDB85ED25E3D97A001BA212 /* std_image_read.cpp */,
+			);
+			path = includes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +224,8 @@
 				2B23E94925D38025002B117C /* shader2.vs in Resources */,
 				2BAD0A6E25C417E200F1DB9B /* Assets.xcassets in Resources */,
 				2B23E94A25D38025002B117C /* shader2.fs in Resources */,
+				2BDB8A6025E3E187001BA212 /* shader3.vs in Resources */,
+				2BDB8A6325E3E1F0001BA212 /* shader3.fs in Resources */,
 				2B23E94425D2B90E002B117C /* wall.jpg in Resources */,
 				2BAD0A7125C417E200F1DB9B /* Main.storyboard in Resources */,
 				2B23E06825D28527002B117C /* shader1.fs in Resources */,
@@ -220,8 +242,10 @@
 			files = (
 				2BAD0A8E25C41A2300F1DB9B /* triangl1.cpp in Sources */,
 				2B23D54B25D268DC002B117C /* triangle2.cpp in Sources */,
+				2BDB85EB25E3D6C8001BA212 /* transform.cpp in Sources */,
 				2B23D54F25D26A6B002B117C /* Shader.h in Sources */,
 				2B23E94025D29BA7002B117C /* texture1.cpp in Sources */,
+				2BDB85EE25E3D97A001BA212 /* std_image_read.cpp in Sources */,
 				2BAD0A8625C419CF00F1DB9B /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +390,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3.2/lib,
 					/usr/local/Cellar/glew/2.1.0_1/lib,
+					"/Users/bytedance/Downloads/glm-0.9.9.8",
 				);
 				INFOPLIST_FILE = opengl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -397,6 +422,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.3.2/lib,
 					/usr/local/Cellar/glew/2.1.0_1/lib,
+					"/Users/bytedance/Downloads/glm-0.9.9.8",
 				);
 				INFOPLIST_FILE = opengl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

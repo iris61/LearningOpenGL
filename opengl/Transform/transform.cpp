@@ -1,39 +1,31 @@
 //
-//  texture1.cpp
+//  transform.cpp
 //  opengl
 //
-//  Created by yangying on 2021/2/9.
+//  Created by yangying on 2021/2/22.
 //
-
-#include <stdio.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Shader.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+#include "Shader.h"
 #include "stb_image.h"
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-float visible = 0.5;
+void framebuffer_size_callback4(GLFWwindow* window, int width, int height);
 
-void framebuffer_size_callback3(GLFWwindow* window, int width, int height);
-
-void processInput3(GLFWwindow *window)
+void processInput4(GLFWwindow *window)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-    
-    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
-        visible -= 0.01;
-    }
-    
-    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        visible += 0.01;
-    }
 }
 
-int draw_texture_main()
+int main()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -54,7 +46,7 @@ int draw_texture_main()
         return -1;
     }
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback3);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback4);
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
@@ -68,7 +60,7 @@ int draw_texture_main()
     
     // read image1
     int width, height, nrChannels;
-    unsigned char *data1 = stbi_load("wall.jpg", &width, &height, &nrChannels, 0);
+    unsigned char *data1 = stbi_load("fu.jpg", &width, &height, &nrChannels, 0);
     
     // texture
     unsigned int texture1;
@@ -83,43 +75,13 @@ int draw_texture_main()
     // clear image data
     stbi_image_free(data1);
     
-    // read image2
-    unsigned char *data2 = stbi_load("fu.jpg", &width, &height, &nrChannels, 0);
     
-    // texture
-    unsigned int texture2;
-    glGenTextures(1, &texture2);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    
-    // 为当前绑定的纹理对象设置环绕、过滤方式
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data2);
-    glGenerateMipmap(GL_TEXTURE_2D);
-    
-    // clear image data
-    stbi_image_free(data2);
-    
-//    // vertice
-//    float vertices[] = {
-//    //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
-//         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   2.0f, 2.0f,   // 右上
-//         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   2.0f, 0.0f,   // 右下
-//        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
-//        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 2.0f    // 左上
-//    };
-    
-    // 放大
     float vertices[] = {
-    //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.01f, 0.01f,   // 右上
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.01f, 0.0f,   // 右下
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.01f    // 左上
+    //     ---- 位置 ----      - 纹理坐标 -
+         0.5f,  0.5f, 0.0f,   1.f, 1.f,   // 右上
+         0.5f, -0.5f, 0.0f,   1.f, 0.0f,   // 右下
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f,   // 左下
+        -0.5f,  0.5f, 0.0f,   0.0f, 1.f    // 左上
     };
     
     unsigned int indices[] = {
@@ -145,11 +107,9 @@ int draw_texture_main()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
     // read vertex
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(2);
     
     // unbind VBO
@@ -159,12 +119,10 @@ int draw_texture_main()
     glBindVertexArray(0);
 
     // shader
-    Shader ourShader("shader2.vs", "shader2.fs");
+    Shader ourShader("shader3.vs", "shader3.fs");
     ourShader.use();
     
     glUniform1i(glGetUniformLocation(ourShader.ID, "ourTexture"), 0); // 手动设置
-    glUniform1i(glGetUniformLocation(ourShader.ID, "ourTexture2"), 1);
-//    ourShader.setInt("ourTexture2", 1); // 或者使用着色器类设置
     
     // render loop
     // -----------
@@ -172,15 +130,21 @@ int draw_texture_main()
     {
         // input
         // -----
-        processInput3(window);
+        processInput4(window);
         
         // render
         // ------
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        // trans
+        glm::mat4 trans = glm::mat4(1.0f);
+        trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+        trans = glm::translate(trans, glm::vec3(0.5f, 0.f, 0.0f));
+        unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
         // program
-        glUniform2f(glGetUniformLocation(ourShader.ID, "visible"), visible, 0);
         glBindVertexArray(VAO);
         // draw
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -197,9 +161,10 @@ int draw_texture_main()
     return 0;
 }
 
-void framebuffer_size_callback3(GLFWwindow* window, int width, int height)
+void framebuffer_size_callback4(GLFWwindow* window, int width, int height)
 {
     // make sure the viewport matches the new window dimensions; note that width and
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
+
