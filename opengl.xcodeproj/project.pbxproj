@@ -16,6 +16,9 @@
 		2B23E94925D38025002B117C /* shader2.vs in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94725D38025002B117C /* shader2.vs */; };
 		2B23E94A25D38025002B117C /* shader2.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94825D38025002B117C /* shader2.fs */; };
 		2B23E94D25D38D68002B117C /* fu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B23E94C25D38D68002B117C /* fu.jpg */; };
+		2B69A35325F4C74100D7E16E /* shader4.vs in Resources */ = {isa = PBXBuildFile; fileRef = 2B69A35125F4C74100D7E16E /* shader4.vs */; };
+		2B69A35425F4C74100D7E16E /* shader4.fs in Resources */ = {isa = PBXBuildFile; fileRef = 2B69A35225F4C74100D7E16E /* shader4.fs */; };
+		2B69A35825F4C75500D7E16E /* location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B69A35625F4C75500D7E16E /* location.cpp */; };
 		2BAD0A6E25C417E200F1DB9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BAD0A6D25C417E200F1DB9B /* Assets.xcassets */; };
 		2BAD0A7125C417E200F1DB9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BAD0A6F25C417E200F1DB9B /* Main.storyboard */; };
 		2BAD0A8025C4198F00F1DB9B /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAD0A7F25C4198F00F1DB9B /* libGLEW.2.1.0.dylib */; };
@@ -40,6 +43,9 @@
 		2B23E94725D38025002B117C /* shader2.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader2.vs; sourceTree = "<group>"; };
 		2B23E94825D38025002B117C /* shader2.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader2.fs; sourceTree = "<group>"; };
 		2B23E94C25D38D68002B117C /* fu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fu.jpg; sourceTree = "<group>"; };
+		2B69A35125F4C74100D7E16E /* shader4.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader4.vs; sourceTree = "<group>"; };
+		2B69A35225F4C74100D7E16E /* shader4.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader4.fs; sourceTree = "<group>"; };
+		2B69A35625F4C75500D7E16E /* location.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = location.cpp; sourceTree = "<group>"; };
 		2BAD0A6425C417E000F1DB9B /* opengl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = opengl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BAD0A6D25C417E200F1DB9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BAD0A7025C417E200F1DB9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +117,16 @@
 			path = Transform;
 			sourceTree = "<group>";
 		};
+		2B69A35025F4C70000D7E16E /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				2B69A35225F4C74100D7E16E /* shader4.fs */,
+				2B69A35125F4C74100D7E16E /* shader4.vs */,
+				2B69A35625F4C75500D7E16E /* location.cpp */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
 		2BAD0A5B25C417E000F1DB9B = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +147,7 @@
 		2BAD0A6625C417E000F1DB9B /* opengl */ = {
 			isa = PBXGroup;
 			children = (
+				2B69A35025F4C70000D7E16E /* Locations */,
 				2BDB85F125E3DB55001BA212 /* includes */,
 				2B23E95025D3C80C002B117C /* Transform */,
 				2B23E93E25D29B89002B117C /* Texture */,
@@ -224,9 +241,11 @@
 				2B23E94925D38025002B117C /* shader2.vs in Resources */,
 				2BAD0A6E25C417E200F1DB9B /* Assets.xcassets in Resources */,
 				2B23E94A25D38025002B117C /* shader2.fs in Resources */,
+				2B69A35425F4C74100D7E16E /* shader4.fs in Resources */,
 				2BDB8A6025E3E187001BA212 /* shader3.vs in Resources */,
 				2BDB8A6325E3E1F0001BA212 /* shader3.fs in Resources */,
 				2B23E94425D2B90E002B117C /* wall.jpg in Resources */,
+				2B69A35325F4C74100D7E16E /* shader4.vs in Resources */,
 				2BAD0A7125C417E200F1DB9B /* Main.storyboard in Resources */,
 				2B23E06825D28527002B117C /* shader1.fs in Resources */,
 				2B23E06525D2850E002B117C /* shader1.vs in Resources */,
@@ -246,6 +265,7 @@
 				2B23D54F25D26A6B002B117C /* Shader.h in Sources */,
 				2B23E94025D29BA7002B117C /* texture1.cpp in Sources */,
 				2BDB85EE25E3D97A001BA212 /* std_image_read.cpp in Sources */,
+				2B69A35825F4C75500D7E16E /* location.cpp in Sources */,
 				2BAD0A8625C419CF00F1DB9B /* glad.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

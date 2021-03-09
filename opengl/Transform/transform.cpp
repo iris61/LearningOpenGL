@@ -25,7 +25,7 @@ void processInput4(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
 }
 
-int main()
+int transform()
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
